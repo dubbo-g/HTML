@@ -9,6 +9,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 html{
@@ -22,6 +23,9 @@ nav{
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .links-container {
@@ -110,46 +114,109 @@ nav svg{
     }
 }
 
-.container{
-    width: 100%;
-    position: absolute;
+.slider {
     overflow: hidden;
-}
-
-.wrapper{
-    width: 100%;
-    display: flex;
-    animation: slide 16s infinite;
-}
-
-@keyframes slide{
-    0%{
-        transform: translateX(0);
-    }
-    25%{
-        transform: translateX(0);
-    }
-    30%{
-        transform: translateX(-100%);
-    }
-    50%{
-        transform: translateX(-100%);
-    }
-    55%{
-        transform: translateX(-200%);
-    }
-    75%{
-        transform: translateX(-200%);
-    }
-    80%{
-        transform: translateX(-300%);
-    }
-    100%{
-        transform: translateX(-300%);
-    }
+    width: 100vw;
+    height: 400px;
+    position: relative;
+   }
     
+   .slider .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    animation: slider 12.5s infinite;
+   }
+    
+   .slider .slide:nth-child(1) {
+      background-image: url(finitoPORSCHE1.jpg);
+      animation-delay: 0s;
+   }
+   
+   .slider .slide:nth-child(2) {
+      background-image: url(finitoPORSCHE5.jpg);
+      animation-delay: -2.5s;
+   }
+   
+   .slider .slide:nth-child(3) {
+      background-image: url(finitoPORSCHE3.jpg);
+      animation-delay: -5s;
+   }
+   
+   .slider .slide:nth-child(4) {
+      background-image: url(finitoPORSCHE4.jpg);
+      animation-delay: -7.5s;
+   }
+   
+   .slider .slide:nth-child(5) {
+      background-image: url(finitoPORSCHE2.jpg);
+      animation-delay: -10s;
+   }
+   
+   @keyframes slider {
+    0%, 16%, 100% {
+      transform: translateX(0);
+      animation-timing-function: ease;
+    }
+    20% {
+      transform: translateX(-100%);
+      animation-timing-function: step-end;
+    }
+    96% {
+      transform: translateX(100%);
+      animation-timing-function: ease;
+    }
+   }
+
+.about-section,
+.services-section,
+.contact-section {
+    padding: 20px;
+    background-color: #1c1f25;
+    color: var(--text-color);
 }
 
-#slide-show{
-
+h2 {
+    font-weight: 600;
+    margin-bottom: 15px;
 }
+
+p {
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: var(--color-1);
+    border-radius: 5px;
+    color: #fff;
+}
+
+.contact-section a {
+    color: var(--acent-color);
+    text-decoration: none;
+}
+
+.contact-section a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    background-color: var(--color-1);
+    color: var(--text-color);
+    text-align: center;
+    padding: 10px 0;
+}
+

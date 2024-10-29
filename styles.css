@@ -2,7 +2,7 @@
 :root{
     --color-1: #0f1016;
     --text-color: #f0f0f0;
-    --acent-color: #006aff;
+    --acent-color: #C90000;
 }
 
 *{
@@ -10,6 +10,11 @@
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
+}
+
+body{
+    background: rgb(0,0,0);
+background: linear-gradient(153deg, rgba(0,0,0,1) 50%, rgba(121,9,9,1) 95%, rgba(201,0,0,1) 100%);
 }
 
 html{
@@ -119,66 +124,125 @@ nav svg{
     width: 100vw;
     height: 400px;
     position: relative;
-   }
-    
-   .slider .slide {
+}
+
+.slider::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    background-image: url(finitoPORSCHE1.jpg);
     background-size: cover;
+    background-position: center;
+    filter: blur(15px);
+    z-index: 1; 
+}
+
+.slider .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: contain; 
     background-position: center center;
     background-repeat: no-repeat;
     animation: slider 12.5s infinite;
-   }
-    
-   .slider .slide:nth-child(1) {
-      background-image: url(finitoPORSCHE1.jpg);
-      animation-delay: 0s;
-   }
-   
-   .slider .slide:nth-child(2) {
-      background-image: url(finitoPORSCHE5.jpg);
-      animation-delay: -2.5s;
-   }
-   
-   .slider .slide:nth-child(3) {
-      background-image: url(finitoPORSCHE3.jpg);
-      animation-delay: -5s;
-   }
-   
-   .slider .slide:nth-child(4) {
-      background-image: url(finitoPORSCHE4.jpg);
-      animation-delay: -7.5s;
-   }
-   
-   .slider .slide:nth-child(5) {
-      background-image: url(finitoPORSCHE2.jpg);
-      animation-delay: -10s;
-   }
-   
-   @keyframes slider {
+    z-index: 2; 
+}
+
+.slider .slide:nth-child(1) {
+    background-image: url(finitoPORSCHE1.jpg);
+    animation-delay: 0s;
+}
+
+.slider .slide:nth-child(2) {
+    background-image: url(finitoPORSCHE5.jpg);
+    animation-delay: -2.5s;
+}
+
+.slider .slide:nth-child(3) {
+    background-image: url(finitoPORSCHE3.jpg);
+    animation-delay: -5s;
+}
+
+.slider .slide:nth-child(4) {
+    background-image: url(finitoPORSCHE4.jpg);
+    animation-delay: -7.5s;
+}
+
+.slider .slide:nth-child(5) {
+    background-image: url(finitoPORSCHE2.jpg);
+    animation-delay: -10s;
+}
+
+@keyframes slider {
     0%, 16%, 100% {
-      transform: translateX(0);
-      animation-timing-function: ease;
+        transform: translateX(0);
+        animation-timing-function: ease;
     }
     20% {
-      transform: translateX(-100%);
-      animation-timing-function: step-end;
+        transform: translateX(-100%);
+        animation-timing-function: step-end;
     }
     96% {
-      transform: translateX(100%);
-      animation-timing-function: ease;
+        transform: translateX(100%);
+        animation-timing-function: ease;
     }
-   }
+}
+
+@media (min-width: 321px) {
+    .slider::before {
+        background-image: var(--current-bg);
+    }
+}
+
+
+
+
 
 .about-section,
+.contact-section,
 .services-section,
-.contact-section {
+.header {
     padding: 20px;
-    background-color: #1c1f25;
     color: var(--text-color);
+    display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+margin: 0 auto;
+max-width: 800px;
+}
+
+.header{
+    text-align: center;
+}
+
+.div-block{
+        background-color: var(--acent-color);
+        height: 4px;
+        width: 20vw;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+@media screen and (max-width: 479px) {
+    .div-block {
+        width: 40vw;
+    }
+}
+
+.header img{
+    object-fit: cover;
+    object-position: center;
+    width: 200px;
+}
+
+.text-span{
+    color: var(--acent-color);
 }
 
 h2 {
@@ -192,17 +256,22 @@ p {
 }
 
 ul {
+    display: flex;
+    flex-direction: column;
     list-style-type: none;
     padding-left: 0;
+    gap: 30px;
 }
 
 ul li {
     margin-bottom: 10px;
     padding: 10px;
-    background-color: var(--color-1);
-    border-radius: 5px;
+    border-radius: 15px;
     color: #fff;
+    text-align: center;
+    background-color: var(--color-1);
 }
+
 
 .contact-section a {
     color: var(--acent-color);
@@ -220,3 +289,52 @@ footer {
     padding: 10px 0;
 }
 
+h3{
+    color: var(--acent-color);
+}
+
+#instagram, #facebook{
+    color: var(--acent-color);
+    font-weight: 1000;
+}
+
+.card-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card{
+    width: 325px;
+    background-color: var(--color-1);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card img{
+    filter: invert(12%) sepia(85%) saturate(5269%) hue-rotate(358deg) brightness(88%) contrast(114%);
+    width: 40%;
+    height: auto;
+}
+
+.card-content{
+    padding: 16px;
+}
+
+.card-content h2, p{
+    color: var(--text-color);
+}
+
+.card-content h2{
+    border-bottom: 1px solid var(--acent-color);
+}
+
+.services-section{
+    padding-bottom: 0px;
+}
